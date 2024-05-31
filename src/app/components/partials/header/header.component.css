@@ -1,0 +1,31 @@
+
+
+header {
+    width: 100%;
+    background-color: #ffd464;
+    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+
+
+.container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4px 23px 7px;
+    background-color: #ffd464;
+}
+
+
+.logo {
+    box-sizing: border-box;
+    display: block;
+    width: 69px;
+    height: 69px;
+    border: none;
+    border-radius: 100px;
+    object-fit: cover;
+}

@@ -33,3 +33,18 @@
         }
     }
 }
+
+.next-events {
+    padding: 40px 16rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+
+    .event-list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}

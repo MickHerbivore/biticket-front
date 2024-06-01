@@ -16,3 +16,17 @@
         <img class="hero-img" src="../../../assets/img/hero_image.png" alt="">
     </section>
 </div>
+
+<section class="next-events">
+    <h2>Próximos eventos</h2>
+
+    <div class="event-list">
+
+        @for (event of events; track $index) {
+
+            <app-event-item [event]="event"></app-event-item>
+        }
+
+    </div>
+
+</section>

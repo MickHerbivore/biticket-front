@@ -13,6 +13,10 @@ export const routes: Routes = [
     {
         path: 'sector',
         loadComponent: () => import('./pages/sector/sector.component').then(m => m.SectorComponent),
+    },
+    {
+        path: 'payment',
+        loadComponent: () => import('./pages/payment/payment.component').then(m => m.PaymentComponent),
     }
     
 ];

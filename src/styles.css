@@ -4,6 +4,9 @@
     --primary-color: #EF476F;
     --secondary-color: #FFD166;
 
+    --text-primary: #2E2612;
+    --text-white: #F5F2F0;
+
     --font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -12,6 +15,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-family);
+    color: var(--text-primary);
 }
 
 .btn-primary {

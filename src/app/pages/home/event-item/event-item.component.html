@@ -1,7 +1,7 @@
-<div class="event-card" [style]="'background-image: url(' + event().image_url + ')'">
-    <span class="event-date">{{ event().date }}</span>
+<a class="event-card" [style]="'background-image: url(' + event().image_url + ')'" (click)="onEvent()">
+    <span class="event-date">{{ event().date | date:'d/MM/yyyy' }}</span>
     <h3 class="event-title">{{ event().name }}</h3>
     <div class="event-location">
         <span>{{ event().location }}</span>
     </div>
-</div>
+</a>

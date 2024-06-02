@@ -1,6 +1,6 @@
 <div class="event-banner">
     <div class="banner-image">
-        <img src="../../../assets/img/hero_image.png">
+        <img [src]="event()?.image_url">
     </div>
 </div>
 
@@ -8,8 +8,8 @@
     
     <div class="left-content">
         <section class="event-info">
-            <h1>Jerry Seinfeld</h1>
-            <p>Movistar Arena<br>30 Junio 2024</p>
+            <h1>{{ event()?.name | titlecase}}</h1>
+            <p>{{ event()?.location | titlecase }}<br>{{ event()?.date | date:'d MMM yyyy' }}</p>
         </section>
         
         <section class="ticket-selection">

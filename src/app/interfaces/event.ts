@@ -1,6 +1,6 @@
 export interface Event {
     name: string;
-    date: string;
+    date: Date;
     location: string;
     image_url: string;
 }

@@ -18,12 +18,16 @@ header {
     width: 100%;
     padding: 4px 23px 7px;
     background-color: #ffd464;
+
+    a {
+        display: flex;
+        width: fit-content;
+    }
 }
 
 
 .logo {
     box-sizing: border-box;
-    display: block;
     width: 69px;
     height: 69px;
     border: none;

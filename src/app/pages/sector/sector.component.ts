@@ -23,4 +23,8 @@ export class SectorComponent implements OnInit {
       this.router.navigate(['/home']);
   }
 
+  onSiguiente() {
+    this.router.navigate(['/payment']);
+  }
+
 }

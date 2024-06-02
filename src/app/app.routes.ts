@@ -11,13 +11,9 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
     },
     {
-        path: 'sector',
-        loadComponent: () => import('./pages/sector/sector.component').then(m => m.SectorComponent),
+        path: 'buy',
+        loadChildren: () => import('./pages/buy-tickets/buy-tickets.routes').then(m => m.routes),
     },
-    {
-        path: 'payment',
-        loadComponent: () => import('./pages/payment/payment.component').then(m => m.PaymentComponent),
-    }
     
 ];
 

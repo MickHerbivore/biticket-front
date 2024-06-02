@@ -1,14 +1,9 @@
-<div class="event-banner">
-    <div class="banner-image">
-        <img src="../../../assets/img/hero_image.png">
-    </div>
-</div>
 
 <main class="main-content">
     <div class="left-content">
         <section class="event-info">
-            <h1>Jerry Seinfeld</h1>
-            <p>Movistar Arena<br>30 Junio 2024</p>
+            <h1>{{ event()?.name | titlecase}}</h1>
+            <p>{{ event()?.location | titlecase }}<br>{{ event()?.date | date:'d MMM yyyy' }}</p>
         </section>
 
         <section class="payment-info">
@@ -38,7 +33,7 @@
                     <td>$240.000</td>
                 </tr>
             </table>
-            <button class="pay-button">Pagar</button>
+            <button class="pay-button" (click)="onPagar()">Pagar</button>
         </section>
     </div>
 </main>

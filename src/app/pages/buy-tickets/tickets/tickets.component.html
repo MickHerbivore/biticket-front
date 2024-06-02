@@ -1,0 +1,35 @@
+
+
+<main class="main-content">
+    
+    <div class="left-content">
+        <section class="event-info">
+            <h1>{{ event()?.name | titlecase}}</h1>
+            <p>{{ event()?.location | titlecase }}<br>{{ event()?.date | date:'d MMM yyyy' }}</p>
+        </section>
+        
+        <h2>Tickets:</h2>
+        <section class="tickets-container">
+            
+            <article>
+                <span class="ticket-title">Sector: Palco</span>
+                <span>Código: f5Yo7CtW3E4N</span>
+                <img src="./../../../../assets/img/ticket_qr.png" alt="Ticket QR">
+            </article>
+
+            <article>
+                <span class="ticket-title">Sector: Cancha</span>
+                <span>Código: PG2pH9hy7RMN</span>
+                <img src="./../../../../assets/img/ticket_qr_hidden.png" alt="Ticket QR">
+            </article>
+
+            <article>
+                <span class="ticket-title">Sector: Platea</span>
+                <span>Código: 3cpMvG9HbF6i</span>
+                <img src="./../../../../assets/img/ticket_qr_hidden.png" alt="Ticket QR">
+            </article>
+            
+        </section>
+        
+    </div>
+</main>

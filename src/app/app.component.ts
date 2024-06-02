@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./components/partials/header/header.component";
-import { SectorComponent} from "./pages/sector/sector.component";
+import { SectorComponent} from "./pages/buy-tickets/sector/sector.component";
 @Component({
     selector: 'app-root',
     standalone: true,

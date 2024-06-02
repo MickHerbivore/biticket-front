@@ -20,7 +20,7 @@ export class EventItemComponent {
 
   onEvent() {
     this.eventService.currentEvent.set(this.event());
-    this.router.navigate(['/sector']);
+    this.router.navigate(['/buy/sector']);
   }
 
 }

@@ -13,8 +13,8 @@ header {
     width: 100%;
     padding: 4px 23px 7px;
     background-color: #ffd464;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
   }
   
@@ -35,6 +35,7 @@ header {
   .username {
     font-size: 1.2em;
     font-weight: bold;
+    justify-self: end;
   }
 
   .tab-buttons {
@@ -42,6 +43,7 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
+    justify-self: end;
 
     button {
       border-radius: 5px;
@@ -62,3 +64,36 @@ header {
       color: var(--text-white);
     }
   }
+
+  .input-search {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5px;
+    max-width: 400px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 1rem;
+  }
+  
+  .input-search input[type="text"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  .input-search img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .input-search input[type="text"]::placeholder {
+    color: #aaa;
+  }
+  

@@ -4,6 +4,13 @@
         <img src="/assets/img/biticket_logo.png" class="logo" />
       </a>
 
+      @if (showUsername) {
+        <div class="input-search">
+          <input type="text" placeholder="Buscar evento...">
+          <img src="./../../../../assets/icons/search.svg" alt="Search icon">
+        </div>
+      }
+
       @if (!isLoggedIn() && showUsername) {
         <div class="tab-buttons">
           <button routerLink="/login">

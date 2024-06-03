@@ -1,17 +1,23 @@
-import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
+import { Component, inject } from '@angular/core';
 import { Event } from '../../interfaces/event';
 import { EventItemComponent } from './event-item/event-item.component';
 import { RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [EventItemComponent, NgFor, RouterLink],
+  imports: [EventItemComponent, NgFor, NgIf, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+
+  private loginService = inject(LoginService);
+
+  isLoggedIn = this.loginService.isLoggedIn;
+  
   public events: Event[] = [
     {
       name: 'Iron Maiden',

@@ -12,7 +12,7 @@
     <div class="forgot-password">
       <a href="#">Recuperar contraseña</a>
     </div>
-    <button type="button" class="btn-login" [routerLink]="['/home']">
+    <button type="button" class="btn-login" (click)="onLogin()">
       <i class="fas fa-user-plus"></i> Iniciar sesion
     </button>
   </form>

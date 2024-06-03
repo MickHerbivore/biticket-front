@@ -36,3 +36,29 @@ header {
     font-size: 1.2em;
     font-weight: bold;
   }
+
+  .tab-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+
+    button {
+      border-radius: 5px;
+      padding: 0.75rem 1.25rem;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:nth-child(1) {
+      background-color: #00000000;
+      color: var(--text-primary);
+    }
+
+    button:nth-child(2) {
+      background-color: var(--primary-color);
+      color: var(--text-white);
+    }
+  }

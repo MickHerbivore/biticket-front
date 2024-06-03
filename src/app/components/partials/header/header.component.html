@@ -3,8 +3,24 @@
       <a [routerLink]="'home'">
         <img src="/assets/img/biticket_logo.png" class="logo" />
       </a>
-      <div class="username" *ngIf="isLoggedIn && showUsername">
-        {{ username }}
-      </div>
+
+      @if (!isLoggedIn() && showUsername) {
+        <div class="tab-buttons">
+          <button routerLink="/login">
+            Iniciar Sesión
+          </button>
+    
+          <button routerLink="/registro">
+            Registrarse
+          </button>
+        </div>
+      }
+
+      @if (isLoggedIn() && showUsername) {
+        <div class="username">
+          {{ username }}
+        </div>  
+      }
+
     </div>
   </header>

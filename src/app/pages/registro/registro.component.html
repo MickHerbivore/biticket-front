@@ -27,7 +27,7 @@
             <input type="password" id="confirm-password" class="form-control" placeholder="Confirme su contraseña">
             <i class="fas fa-eye" id="toggleConfirmPassword"></i>
         </div>
-        <button type="button" class="btn-register" [routerLink]="['/home']">
+        <button type="button" class="btn-register" (click)="onRegister()">
             <i class="fas fa-user-plus"></i> Registrarse
           </button>
     </form>

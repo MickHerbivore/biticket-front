@@ -4,11 +4,11 @@
         <div class="hero-text">
             <h1>Tus eventos, a un Bit de distancia</h1>
     
-            <h3>Accede, disfruta, repite</h3>
-            
-            
-
-            <button class="btn-primary" [routerLink]="'/sector'"> Test</button>
+            @if (!isLoggedIn()) {
+                <h3>Accede, disfruta, repite</h3>
+                    
+                <button class="btn-primary" [routerLink]="'/registro'"> Registrarse</button>
+            }
         </div>
     </section>
 

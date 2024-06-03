@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,4 +11,11 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
 
+  private loginService = inject(LoginService);
+  private router = inject(Router);
+
+  onLogin() {
+    this.loginService.isLoggedIn.set(true);
+    this.router.navigate(['/home']);
+  }
 }

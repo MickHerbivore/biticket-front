@@ -1,11 +1,10 @@
 <header>
-
     <div class="container">
-        
-        <a [routerLink]="'home'">
-            <img src="/assets/img/biticket_logo.png" class="logo" />
-        </a>
-
+      <a [routerLink]="'home'">
+        <img src="/assets/img/biticket_logo.png" class="logo" />
+      </a>
+      <div class="username" *ngIf="isLoggedIn && showUsername">
+        {{ username }}
+      </div>
     </div>
-
-</header>
+  </header>

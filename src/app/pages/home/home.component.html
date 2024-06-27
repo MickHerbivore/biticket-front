@@ -1,0 +1,32 @@
+
+<div class="hero">
+    <section class="hero-section">
+        <div class="hero-text">
+            <h1>Tus eventos, a un Bit de distancia</h1>
+    
+            @if (!isLoggedIn()) {
+                <h3>Accede, disfruta, repite</h3>
+                    
+                <button class="btn-primary" [routerLink]="'/registro'"> Registrarse</button>
+            }
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <img class="hero-img" src="../../../assets/img/hero_image.png" alt="">
+    </section>
+</div>
+
+<section class="next-events">
+    <h2 class="next-events-title">Próximos eventos</h2>
+
+    <div class="event-list">
+
+        @for (event of events; track $index) {
+
+            <app-event-item [event]="event"></app-event-item>
+        }
+
+    </div>
+
+</section>

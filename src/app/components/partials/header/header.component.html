@@ -1,12 +1,33 @@
 <header>
-
-
     <div class="container">
-        
-        <img src="/assets/icons/img_I5_86_5_139_5f9f92.png" class="logo" />
+      <a [routerLink]="'home'">
+        <img src="/assets/img/biticket_logo.png" class="logo" />
+      </a>
+
+      @if (showUsername) {
+        <div class="input-search">
+          <input type="text" placeholder="Buscar evento...">
+          <img src="./../../../../assets/icons/search.svg" alt="Search icon">
+        </div>
+      }
+
+      @if (!isLoggedIn() && showUsername) {
+        <div class="tab-buttons">
+          <button routerLink="/login">
+            Iniciar Sesión
+          </button>
+    
+          <button routerLink="/registro">
+            Registrarse
+          </button>
+        </div>
+      }
+
+      @if (isLoggedIn() && showUsername) {
+        <div class="username">
+          {{ username }}
+        </div>  
+      }
 
     </div>
-
-
-
-</header>
+  </header>

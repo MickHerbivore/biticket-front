@@ -2,7 +2,8 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LoginService } from '../../../services/login.service';
+import { AuthService } from './../../services/auth/auth.service';
+import { User } from './../../models/User';
 
 @Component({
   selector: 'app-header',
@@ -12,16 +13,18 @@ import { LoginService } from '../../../services/login.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  private loginService = inject(LoginService);
   private router = inject(Router);
+  private authService = inject(AuthService);
 
-  isLoggedIn = this.loginService.isLoggedIn;
-  username: string = 'Juanin Willyrex';
-  showUsername: boolean = true;
-
+  username: string | null = null;
+  showUsername: boolean = false;
 
   ngOnInit() {
+    this.authService.currentUser.subscribe((user: User | null) => {
+      this.username = user ? user.first_name : null;
+      this.showUsername = !!user;
+    });
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.checkRoute(event.url);
@@ -33,7 +36,7 @@ export class HeaderComponent implements OnInit {
     if (url.includes('login') || url.includes('registro')) {
       this.showUsername = false;
     } else {
-      this.showUsername = true;
+      this.showUsername = !!this.username;
     }
   }
 }

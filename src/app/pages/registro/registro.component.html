@@ -2,35 +2,37 @@
     <form class="register-form">
         <img src="/assets/img/biticket_logo.png" class="logo" />
         <div class="form-group">
-            <label for="rut">RUT</label>
-            <input type="text" id="rut" class="form-control" placeholder="Ingrese su RUT">
-        </div>
-        <div class="form-group">
             <label for="nombres">Nombres</label>
-            <input type="text" id="nombres" class="form-control" placeholder="Ingrese sus nombres">
+            <input type="text" id="nombres" class="form-control" placeholder="Ingrese sus nombres"
+                [(ngModel)]="user.nombres" name="nombres">
         </div>
         <div class="form-group">
             <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" class="form-control" placeholder="Ingrese sus apellidos">
+            <input type="text" id="apellidos" class="form-control" placeholder="Ingrese sus apellidos"
+                [(ngModel)]="user.apellidos" name="apellidos">
         </div>
         <div class="form-group">
             <label for="correo">Correo</label>
-            <input type="email" id="correo" class="form-control" placeholder="Ingrese su correo">
+            <input type="email" id="correo" class="form-control" placeholder="Ingrese su correo"
+                [(ngModel)]="user.correo" name="correo">
         </div>
         <div class="form-group password-container">
             <label for="password">Contraseña</label>
-            <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña">
+            <input type="password" id="password" class="form-control" placeholder="Ingrese su contraseña"
+                [(ngModel)]="user.password" name="password">
             <i class="fas fa-eye" id="togglePassword"></i>
         </div>
         <div class="form-group">
             <label for="confirm-password">Confirmar Contraseña</label>
-            <input type="password" id="confirm-password" class="form-control" placeholder="Confirme su contraseña">
+            <input type="password" id="confirm-password" class="form-control" placeholder="Confirme su contraseña"
+                [(ngModel)]="user.confirmPassword" name="confirmPassword">
             <i class="fas fa-eye" id="toggleConfirmPassword"></i>
         </div>
         <button type="button" class="btn-register" (click)="onRegister()">
             <i class="fas fa-user-plus"></i> Registrarse
-          </button>
+        </button>
     </form>
 </div>
+
 
 <script src="script.js"></script>

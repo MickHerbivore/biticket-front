@@ -1,21 +1,42 @@
-import { LoginService } from './../../services/login.service';
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+import { AuthService } from './../../services/auth/auth.service';
+import { FormsModule } from '@angular/forms'; 
 
 @Component({
   selector: 'app-registro',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './registro.component.html',
-  styleUrl: './registro.component.css'
+  styleUrls: ['./registro.component.css'] 
 })
 export class RegistroComponent {
 
-  private loginService = inject(LoginService);
+  user: any = {
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    password: '',
+    confirmPassword: ''
+  };
+
+  constructor(private authService: AuthService) {}
+
   private router = inject(Router);
 
   onRegister() {
-    this.loginService.isLoggedIn.set(true);
-    this.router.navigate(['/home']);
+    if (this.user.password !== this.user.confirmPassword) {
+      console.error('Passwords do not match');
+      return;
+    }
+    this.authService.register(this.user).subscribe({
+      next: response => {
+        console.log('User registered successfully', response);
+        this.router.navigate(['/login']);
+      },
+      error: error => {
+        console.error('Registration error', error);
+      }
+    });
   }
 }

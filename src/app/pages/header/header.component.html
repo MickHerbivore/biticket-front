@@ -1,0 +1,20 @@
+<header>
+    <div class="container">
+      <a [routerLink]="'home'">
+        <img src="/assets/img/biticket_logo.png" class="logo" />
+      </a>
+
+      @if (showUsername) {
+        <div class="input-search">
+          <input type="text" placeholder="Buscar evento...">
+          <img src="./../../../../assets/icons/search.svg" alt="Search icon">
+        </div>
+      }
+
+      <div *ngIf="showUsername" class="username">
+        {{ username }}
+      </div>
+  
+
+    </div>
+  </header>

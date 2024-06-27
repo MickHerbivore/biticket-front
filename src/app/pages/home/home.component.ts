@@ -1,9 +1,9 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Event } from '../../interfaces/event';
-import { EventItemComponent } from './event-item/event-item.component';
 import { RouterLink } from '@angular/router';
-import { LoginService } from '../../services/login.service';
+import { Event } from '../../interfaces/event';
+import { AuthService } from '../../services/auth/auth.service';
+import { EventItemComponent } from './event-item/event-item.component';
 
 @Component({
   selector: 'app-home',
@@ -14,9 +14,9 @@ import { LoginService } from '../../services/login.service';
 })
 export class HomeComponent {
 
-  private loginService = inject(LoginService);
+  private authService = inject(AuthService);
 
-  isLoggedIn = this.loginService.isLoggedIn;
+  isLoggedIn = !!this.authService.currentUser();
   
   public events: Event[] = [
     {

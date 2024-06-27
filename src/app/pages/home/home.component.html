@@ -4,7 +4,7 @@
         <div class="hero-text">
             <h1>Tus eventos, a un Bit de distancia</h1>
     
-            @if (!isLoggedIn()) {
+            @if (!isLoggedIn) {
                 <h3>Accede, disfruta, repite</h3>
                     
                 <button class="btn-primary" [routerLink]="'/registro'"> Registrarse</button>

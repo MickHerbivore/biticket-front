@@ -8,6 +8,8 @@
     .hero-section {
         width: 50%;
         height: 100%;
+        display: flex;
+        align-items: center;
 
         .hero-text {
             padding-left: 16%;

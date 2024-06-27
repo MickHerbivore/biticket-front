@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { AuthResponse } from './../../models/auth-response.model';
+import { environment } from './../../../environments/environment';
 import { User } from './../../models/User';
+import { AuthResponse } from './../../models/auth-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = environment.apiUrl;
 
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
@@ -33,11 +32,11 @@ export class AuthService {
       password: user.password
     };
 
-    return this.http.post(`${this.apiUrl}/api/auth/signup`, payload);
+    return this.http.post(`${environment.apiUrl}${environment.singupPath}`, payload);
   }
 
   login(credentials: any): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/login`, credentials).pipe(
+    return this.http.post<AuthResponse>(`${environment.apiUrl}${environment.loginPath}`, credentials).pipe(
       tap((response: AuthResponse) => {
         localStorage.setItem('currentUser', JSON.stringify(response.user));
         this.currentUserSubject.next(response.user);

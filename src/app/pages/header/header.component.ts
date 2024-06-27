@@ -1,9 +1,10 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './../../services/auth/auth.service';
 import { User } from './../../models/User';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,31 +13,35 @@ import { User } from './../../models/User';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private authService = inject(AuthService);
+  private subs: Subscription[] = [];
 
-  username: string | null = null;
-  showUsername: boolean = false;
+  user = this.authService.currentUser;
+  showMenu = false;
+
 
   ngOnInit() {
-    this.authService.currentUser.subscribe((user: User | null) => {
-      this.username = user ? user.first_name : null;
-      this.showUsername = !!user;
-    });
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.checkRoute(event.url);
-      }
-    });
+    this.subs.push(
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          this.checkRoute(event.url);
+        }
+      })
+    );
   }
 
   checkRoute(url: string) {
     if (url.includes('login') || url.includes('registro')) {
-      this.showUsername = false;
+      this.showMenu = false;
     } else {
-      this.showUsername = !!this.username;
+      this.showMenu = true;
     }
   }
+
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe());
+  }
+
 }

@@ -1,20 +1,32 @@
+
 <header>
-    <div class="container">
-      <a [routerLink]="'home'">
-        <img src="/assets/img/biticket_logo.png" class="logo" />
-      </a>
+  <div class="container">
+    <a [routerLink]="'home'">
+      <img src="/assets/img/biticket_logo.png" class="logo" />
+    </a>
 
-      @if (showUsername) {
-        <div class="input-search">
-          <input type="text" placeholder="Buscar evento...">
-          <img src="./../../../../assets/icons/search.svg" alt="Search icon">
-        </div>
-      }
-
-      <div *ngIf="showUsername" class="username">
-        {{ username }}
+    @if (showMenu) {
+      <div class="input-search">
+        <input type="text" placeholder="Buscar evento...">
+        <img src="./../../../../assets/icons/search.svg" alt="Search icon">
       </div>
-  
+      
+      @if (!user()) {
+        <div class="tab-buttons">
+          <button routerLink="/login">
+            Iniciar Sesión
+          </button>
+    
+          <button routerLink="/registro">
+            Registrarse
+          </button>
+        </div>
+      } @else {
+        <div class="username">
+          {{ user()?.first_name }}
+        </div>  
+      }
+    }
 
-    </div>
-  </header>
+  </div>
+</header>

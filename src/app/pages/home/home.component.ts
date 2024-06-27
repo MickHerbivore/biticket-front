@@ -16,7 +16,7 @@ export class HomeComponent {
 
   private authService = inject(AuthService);
 
-  isLoggedIn = !!this.authService.currentUser();
+  isLoggedIn = this.authService.isLoggedIn;
   
   public events: Event[] = [
     {

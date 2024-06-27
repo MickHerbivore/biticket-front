@@ -4,8 +4,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    overflow: hidden;
-    z-index: 1000;
+    /* overflow: hidden; */
+    z-index: 999;
   }
   
   .container {
@@ -36,6 +36,37 @@ header {
     font-size: 1.2em;
     font-weight: bold;
     justify-self: end;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: absolute;
+      z-index: 1000;
+      background-color: var(--primary-color);
+      top: 30px;
+      right: 0;
+      padding: 1rem;
+      width: 10rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+
+      a {
+        color: var(--text-white);
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+        transition: 0.3s;
+        width: 100%;
+
+        &:hover {
+          background-color: var(--text-white);
+          color: var(--primary-color);
+        }
+      }
+    }
   }
 
   .tab-buttons {

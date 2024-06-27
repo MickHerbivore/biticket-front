@@ -1,10 +1,8 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { AuthService } from './../../services/auth/auth.service';
-import { User } from './../../models/User';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from './../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -20,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   user = this.authService.currentUser;
   showMenu = false;
-
+  showOptions = false;
 
   ngOnInit() {
     this.subs.push(
@@ -38,6 +36,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     } else {
       this.showMenu = true;
     }
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
   }
 
   ngOnDestroy(): void {

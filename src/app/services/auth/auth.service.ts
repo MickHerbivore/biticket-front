@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
@@ -14,6 +14,7 @@ export class AuthService {
   private http = inject(HttpClient);
 
   public currentUser = signal<User | null>(null);
+  public isLoggedIn = computed(() => !!this.currentUser());
 
   constructor() {
     const userFromStorage = localStorage.getItem('currentUser');

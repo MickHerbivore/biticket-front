@@ -22,9 +22,18 @@
           </button>
         </div>
       } @else {
-        <div class="username">
+        <div class="username" (click)="showOptions = !showOptions">
           {{ user()?.first_name }}
-        </div>  
+
+          @if (showOptions) {
+            <div class="dropdown">
+              <!-- <a routerLink="/perfil">Perfil</a>
+              <a routerLink="/mis-entradas">Mis entradas</a>
+              <a routerLink="/mis-eventos">Mis eventos</a> -->
+              <a (click)="logout()">Cerrar Sesión</a>
+            </div>
+          }
+        </div>
       }
     }
 

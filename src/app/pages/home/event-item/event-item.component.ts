@@ -1,7 +1,7 @@
 import { Component, inject, input } from '@angular/core';
 import { Event } from '../../../interfaces/event';
 import { Router } from '@angular/router';
-import { EventService } from '../../../services/event.service';
+import { EventService } from '../../../services/event/event.service';
 import { DatePipe } from '@angular/common';
 
 @Component({

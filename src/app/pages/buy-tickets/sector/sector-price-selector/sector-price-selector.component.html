@@ -1,0 +1,18 @@
+<div class="sector">
+
+  <div class="sector-name">
+      <span class="color-dot" [style]="'background-color: '+ ticketDetail().sector.color"></span>
+      <span>{{ ticketDetail().sector.name }}</span>
+  </div>
+
+  <div class="sector-price">
+    <span class="ticket-info">{{ ticketDetail().price | currency:'CLP':'symbol':'1.0-0'  }}</span>
+  </div>
+  
+  <div class="quantity">
+      <button class="quantity-btn" (click)="substractOne()">-</button>
+      <input type="text" [value]="quantity()" class="quantity-input">
+      <button class="quantity-btn" (click)="addOne()">+</button>
+  </div>
+
+</div>

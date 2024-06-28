@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { EventService } from '../../../services/event.service';
+import { EventService } from '../../../services/event/event.service';
 import { DatePipe, TitleCasePipe } from '@angular/common';
 
 @Component({

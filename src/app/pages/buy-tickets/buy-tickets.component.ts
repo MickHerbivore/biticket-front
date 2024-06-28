@@ -1,7 +1,7 @@
 import { DatePipe, TitleCasePipe } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { EventService } from '../../services/event.service';
+import { EventService } from '../../services/event/event.service';
 
 @Component({
   selector: 'app-buy-tickets',

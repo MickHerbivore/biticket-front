@@ -13,24 +13,16 @@
                 <img src="../../../assets/img/paypal_image.png" alt="PayPal" class="payment-icon selected">
             </div>
             <table class="pricing-table">
-                <tr>
-                    <td>1</td>
-                    <td>Palco</td>
-                    <td>$100.000</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Cancha</td>
-                    <td>$80.000</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Platea</td>
-                    <td>$60.000</td>
-                </tr>
+                @for (ticketBySector of ticketsBySector(); track $index) {
+                    <tr>
+                        <td>{{ ticketBySector.quantity }}</td>
+                        <td>{{ ticketBySector.ticketDetail.sector.name }}</td>
+                        <td>{{ ticketBySector.quantity * ticketBySector.ticketDetail.price | currency:'CLP':'symbol':'1.0-0' }}</td>
+                    </tr>
+                }
                 <tr class="total">
                     <td colspan="2">Total</td>
-                    <td>$240.000</td>
+                    <td>{{ total() | currency:'CLP':'symbol':'1.0-0'  }}</td>
                 </tr>
             </table>
             <button class="pay-button" (click)="onPagar()">Pagar</button>

@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { EventItemComponent } from './event-item/event-item.component';
 import { EventService } from '../../services/event/event.service';
 import { Subscription } from 'rxjs';
+import { BuyService } from '../buy-tickets/services/buy.service';
 
 @Component({
   selector: 'app-home',
@@ -18,12 +19,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private authService = inject(AuthService);
   private eventService = inject(EventService);
+  private buyService = inject(BuyService);
   private subs: Subscription[] = [];
 
   isLoggedIn = this.authService.isLoggedIn;
   events: Event[] = [];
   
   ngOnInit(): void {
+    this.buyService.resetSelectedTickets();
     this.subs.push(
       this.eventService.getEvents().subscribe({
         next: (events) => {

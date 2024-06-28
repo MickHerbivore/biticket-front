@@ -15,3 +15,8 @@ export interface Sector {
     name: string;
     color: string;
 }
+
+export interface SelectedTickets {
+    ticketDetail: TicketDetails;
+    quantity: number;
+}

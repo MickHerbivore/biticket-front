@@ -20,7 +20,7 @@ export class SectorComponent implements OnInit {
 
   public event = this.eventService.currentEvent;
 
-  public total = this.buyService.total;
+  public total = this.buyService.totalPrice;
 
 
   ngOnInit() {

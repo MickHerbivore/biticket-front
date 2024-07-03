@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { LoginService } from '../../services/login.service';
 import { AuthService } from './../../services/auth/auth.service';
 import { FormsModule } from '@angular/forms';
 
@@ -9,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [RouterLink, FormsModule],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
@@ -19,7 +18,6 @@ export class LoginComponent {
   };
 
   constructor(private authService: AuthService) {}
-  private loginService = inject(LoginService);
   private router = inject(Router);
 
   onLogin() {
@@ -31,9 +29,7 @@ export class LoginComponent {
       },
       error: error => {
         console.error('Login error', error);
-
       }
     });
-
   }
 }

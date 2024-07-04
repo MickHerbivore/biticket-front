@@ -18,9 +18,9 @@ export class RegistroComponent implements OnDestroy {
   private subs: Subscription[] = [];
 
   user: any = {
-    nombres: '',
-    apellidos: '',
-    correo: '',
+    first_name: '',
+    last_name: '',
+    email: '',
     password: '',
     confirmPassword: ''
   };

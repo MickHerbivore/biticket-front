@@ -3,8 +3,8 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
-import { User } from './../../models/User';
-import { AuthResponse } from './../../models/auth-response.model';
+import { User } from '../../interfaces/user.interface';
+import { AuthRequest, AuthResponse } from '../../interfaces/auth.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,11 +33,13 @@ export class AuthService {
     return this.http.post(`${environment.apiUrl}${environment.singupPath}`, payload);
   }
 
-  login(credentials: any): Observable<AuthResponse> {
+  login(credentials: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(`${environment.apiUrl}${environment.loginPath}`, credentials).pipe(
       tap((response: AuthResponse) => {
-        localStorage.setItem('currentUser', JSON.stringify(response.user));
-        this.currentUser.set(response.user);
+        const token = response.token;
+        const user = this.decodeToken(token);
+        localStorage.setItem('token', token);
+        this.currentUser.set(user);
       })
     );
   }
@@ -46,4 +48,27 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUser.set(null);
   }
+
+  private decodeToken(token: string): User | null {
+    try {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      if (decodedToken.exp * 1000 > Date.now()) {
+        return {
+          id: decodedToken.id,
+          first_name: decodedToken.first_name,
+          last_name: decodedToken.last_name,
+          email: decodedToken.email,
+          password: ''
+        };
+      }
+      
+      localStorage.removeItem('token');
+      return null;
+      
+    } catch (e) {
+      localStorage.removeItem('token');
+      return null;
+    }
+  }
+
 }

@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from './../../services/auth/auth.service';
+import { AuthRequest } from '../../interfaces/auth.interface';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent implements OnDestroy {
   private router = inject(Router);
   private subs: Subscription[] = [];
   
-  credentials: any = {
+  credentials: AuthRequest = {
     email: '',
     password: ''
   };

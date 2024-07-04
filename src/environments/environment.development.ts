@@ -4,5 +4,6 @@ export const environment = {
     userPath: 'user/',
     loginPath: 'auth/login/',
     singupPath: 'auth/signup/',
+    eventPath: 'event/',
   };
   

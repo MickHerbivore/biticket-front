@@ -22,7 +22,7 @@
 
     <div class="event-list">
 
-        @for (event of events; track $index) {
+        @for (event of events(); track $index) {
 
             <app-event-item [event]="event"></app-event-item>
         }

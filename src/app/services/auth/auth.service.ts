@@ -17,8 +17,12 @@ export class AuthService {
   public isLoggedIn = computed(() => !!this.currentUser());
 
   constructor() {
-    const userFromStorage = localStorage.getItem('currentUser');
-    this.currentUser.set(userFromStorage ? JSON.parse(userFromStorage) : null);
+    const token = localStorage.getItem('token');
+    if (!token) return 
+
+    const user = this.decodeToken(token);
+    localStorage.setItem('token', token);
+    this.currentUser.set(user);
   }
 
 
@@ -45,7 +49,7 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('token');
     this.currentUser.set(null);
   }
 

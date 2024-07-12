@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   showMenu = false;
   showOptions = false;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subs.push(
       this.router.events.subscribe(event => {
         if (event instanceof NavigationEnd) {
@@ -28,6 +28,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
       })
     );
+
+    this.setupAudioPlayer(); 
   }
   setupAudioPlayer(): void {
     const audio = document.getElementById('myAudio') as HTMLAudioElement;

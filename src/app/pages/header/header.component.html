@@ -1,9 +1,23 @@
 
 <header>
+  
   <div class="container">
+
     <a [routerLink]="'home'">
       <img src="/assets/img/biticket_logo.png" class="logo" />
     </a>
+    <div class="audio"><audio controls autoplay loop="">
+      <source src="/assets/audio/shawn-mendes-imagination-official-audio-youtubemp3free.org.mp3">
+      <source src="/src/assets/audio/Arctic Monkeys; Do I Wanna Know_ [Traducida al español] (128 kbps).mp3">
+      <source src="/src/assets/audio/Beyoncé - Halo (Lyrics) (128 kbps).mp3">
+      <source src="/src/assets/audio/Coldplay - Yellow (Official Video) (128 kbps).mp3">
+      <source src="/src/assets/audio/Bruno Mars Talking to the Moon (128 kbps).mp3">
+      <source src="/src/assets/audio/Iron Maiden - The Trooper Lyrics (128 kbps).mp3">
+      <source src="/src/assets/audio/Metallica - Enter Sandman - Subtitulado Español & Inglés (128 kbps).mp3">
+      <source src="/src/assets/audio/The Weeknd - Can't Feel My Face (Official Video) (128 kbps).mp3">
+      
+    </audio></div>
+    
 
     @if (showMenu) {
       <div class="input-search">
@@ -32,10 +46,13 @@
               <a routerLink="/mis-eventos">Mis eventos</a> -->
               <a (click)="logout()">Cerrar Sesión</a>
             </div>
+            
           }
         </div>
+        
       }
     }
 
   </div>
+  
 </header>

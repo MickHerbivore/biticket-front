@@ -18,10 +18,6 @@ header {
     align-items: center;
   }
   
-  a {
-    display: flex;
-    width: fit-content;
-  }
   
   .logo {
     box-sizing: border-box;
@@ -30,13 +26,22 @@ header {
     border: none;
     border-radius: 100px;
     object-fit: cover;
+    
+  }
+  .audio{
+    grid-column: 2;
+    align-self: center;
+    position:absolute;
+    padding: 80px;
   }
   
+  
   .username {
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-weight: bold;
     justify-self: end;
     position: relative;
+    
 
     &:hover {
       cursor: pointer;

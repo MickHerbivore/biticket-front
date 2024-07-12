@@ -22,7 +22,7 @@
             <div class="total-section">
                 <span>Total</span>
                 <span class="total-price">{{ total() | currency:'CLP':'symbol':'1.0-0'  }}</span>
-                <button class="next-btn" (click)="onSiguiente()">Siguiente</button>
+                <button class="next-btn" (click)="onSiguiente()" [disabled]="total() === 0">Siguiente</button>
             </div>
 
         </section>

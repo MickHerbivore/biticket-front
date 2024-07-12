@@ -29,7 +29,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
       })
     );
   }
+  setupAudioPlayer(): void {
+    const audio = document.getElementById('myAudio') as HTMLAudioElement;
+    let currentTrack = 0;
 
+    audio.addEventListener('ended', () => {
+      currentTrack++;
+      if (currentTrack >= audio.children.length) {
+        currentTrack = 0;
+      }
+      audio.src = (audio.children[currentTrack] as HTMLSourceElement).src;
+      audio.play();
+    });
+  }
   checkRoute(url: string) {
     if (url.includes('login') || url.includes('registro')) {
       this.showMenu = false;

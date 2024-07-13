@@ -22,15 +22,14 @@ export class SectorComponent implements OnInit, OnDestroy {
   private subs: Subscription[] = [];
 
   public event = this.eventService.currentEvent;
-  public cart = this.cartService.currentCart;
+  public selectedTickets = this.cartService.selectedTickets;
   public loadingCart = this.cartService.loadingCart;
 
   public total = this.cartService.totalPrice;
 
   public ticketDetails = computed(() => {
     return this.event()?.ticketDetails.map((ticketEvent) => {
-
-      const quantity = this.cart()?.tickets.filter((ticketCart) => ticketCart.sector.toString() === ticketEvent.sector._id).length || 0;
+      const quantity = this.selectedTickets().filter((ticketCart) => ticketCart.sector._id === ticketEvent.sector._id).length || 0;
 
       return {
         ...ticketEvent,
@@ -47,7 +46,6 @@ export class SectorComponent implements OnInit, OnDestroy {
     }
 
     this.getEvent();
-    this.getCart();
   }
 
   getEvent() {
@@ -55,14 +53,6 @@ export class SectorComponent implements OnInit, OnDestroy {
       this.eventService.getCurrentEvent().subscribe()
     );
   }
-
-  getCart() {
-    this.subs.push(
-      // this.cartService.getCart().subscribe()
-    );
-  }
-
-
 
   onSiguiente() {
     this.router.navigate(['/buy/payment']);

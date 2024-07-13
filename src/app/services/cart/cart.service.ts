@@ -19,10 +19,12 @@ export class CartService {
   public loadingCart = signal<boolean>(false);
 
   public selectedTickets = signal<TicketDetails[]>([]);
+  
   public totalPrice = computed(() => this.selectedTickets().reduce((acc, ticket) => acc + ticket.price, 0));
+  
   public ticketsBySector = computed<SelectedTickets[]>(() => {
     const ticketsBySector = this.selectedTickets().reduce((acc, ticket) => {
-      const ticketIndex = acc.findIndex(ticketAcc => ticketAcc.ticketDetail.sector.name === ticket.sector.name);
+      const ticketIndex = acc.findIndex(ticketAcc => ticketAcc.ticketDetail.sector._id === ticket.sector._id);
       if (ticketIndex === -1) {
         acc.push({ ticketDetail: ticket, quantity: 1 });
       } else {
@@ -76,7 +78,7 @@ export class CartService {
 
   private popTicket(ticketRemove: TicketDetails) {
     this.selectedTickets.update((tickets) => {
-      const ticketIndex = tickets.findIndex(ticket => ticket.sector.toString() === ticketRemove.sector._id);
+      const ticketIndex = tickets.findIndex(ticket => ticket.sector._id === ticketRemove.sector._id);
       return tickets.filter((ticket, index) => index !== ticketIndex);
     });
   }

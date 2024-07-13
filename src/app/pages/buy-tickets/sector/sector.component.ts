@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { CartService } from '../../../services/cart/cart.service';
 import { EventService } from '../../../services/event/event.service';
 import { SectorPriceSelectorComponent } from './sector-price-selector/sector-price-selector.component';
+import { OrderService } from '../../../services/order/order.service';
 
 @Component({
   selector: 'app-sector',
@@ -17,6 +18,7 @@ export class SectorComponent implements OnInit, OnDestroy {
 
   private eventService = inject(EventService);
   private cartService = inject(CartService);
+  private orderService = inject(OrderService);
   private router = inject(Router);
 
   private subs: Subscription[] = [];
@@ -55,7 +57,11 @@ export class SectorComponent implements OnInit, OnDestroy {
   }
 
   onSiguiente() {
-    this.router.navigate(['/buy/payment']);
+    this.subs.push(
+      this.orderService.createOrder().subscribe({
+        next: () => this.router.navigate(['/buy/payment'])
+      })
+    );
   }
 
   ngOnDestroy(): void {

@@ -8,5 +8,6 @@ export const environment = {
     cartPath: 'cart/',
     cartAddPath: 'cart/add/',
     cartRemovePath: 'cart/remove/',
+    orderPath: 'order/',
   };
   

@@ -72,3 +72,16 @@
     background-color: #e0356d;
 }
 
+
+.pay-option-btn {
+    width: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid darkcyan;
+    border-radius: 1rem;
+    
+    img {
+        width: 100%;
+    }
+}

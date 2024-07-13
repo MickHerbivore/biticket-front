@@ -3,6 +3,7 @@ import { TicketDetails } from "./event";
 export interface TicketRequest {
   userId: string;
   ticketId: string;
+  eventId?: string;
 }
 
 export interface Cart {

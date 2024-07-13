@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { Cart, TicketRequest } from '../../interfaces/cart.interface';
 import { SelectedTickets, TicketDetails } from '../../interfaces/event';
 import { AuthService } from '../auth/auth.service';
+import { EventService } from '../event/event.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class CartService {
 
   private http = inject(HttpClient);
   private authService = inject(AuthService);
+  private eventService = inject(EventService);
 
   public currentCart = toSignal(this.getCart());
   public loadingCart = signal<boolean>(false);
@@ -42,7 +44,8 @@ export class CartService {
   public addTicket( ticket: TicketDetails ) {
     const request: TicketRequest = {
       userId: this.authService.currentUser()?.id!,
-      ticketId: ticket._id
+      ticketId: ticket._id,
+      eventId: this.eventService.currentEvent()?._id!
     };
     return this.http.post(`${environment.apiUrl}${environment.cartAddPath}`, request)
     .pipe(

@@ -9,5 +9,6 @@ export const environment = {
     cartAddPath: 'cart/add/',
     cartRemovePath: 'cart/remove/',
     orderPath: 'order/',
+    paymentPath: 'order/payment/',
   };
   

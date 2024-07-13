@@ -27,4 +27,11 @@ export class EventService {
       );
   }
 
+  getEvent(eventId: string): Observable<Event> {
+    return this.http.get<Event>(`${environment.apiUrl}${environment.eventPath}${eventId}`)
+    .pipe(  
+      tap(event => this.currentEvent.set(event))
+    );
+  }
+
 }

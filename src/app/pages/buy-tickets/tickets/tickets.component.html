@@ -11,24 +11,13 @@
         <h2>Tickets:</h2>
         <section class="tickets-container">
             
-            <article>
-                <span class="ticket-title">Sector: Palco</span>
-                <span>Código: f5Yo7CtW3E4N</span>
-                <img src="./../../../../assets/img/ticket_qr.png" alt="Ticket QR">
-            </article>
-
-            <article>
-                <span class="ticket-title">Sector: Cancha</span>
-                <span>Código: PG2pH9hy7RMN</span>
-                <img src="./../../../../assets/img/ticket_qr_hidden.png" alt="Ticket QR">
-            </article>
-
-            <article>
-                <span class="ticket-title">Sector: Platea</span>
-                <span>Código: 3cpMvG9HbF6i</span>
-                <img src="./../../../../assets/img/ticket_qr_hidden.png" alt="Ticket QR">
-            </article>
-            
+            @for (ticket of order()?.tickets; track $index) {
+                <article [style]="'background-color: ' + ticket.sector.color + '50;'">
+                    <span class="ticket-title">Sector: {{ ticket.sector.name | titlecase }}</span>
+                    <span>Código: {{ ticket._id | titlecase }}</span>
+                    <img src="./../../../../assets/img/ticket_qr.png" alt="Ticket QR">
+                </article>
+            }
         </section>
         
     </div>

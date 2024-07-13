@@ -2,6 +2,7 @@
 .tickets-container {
     display: flex;
     gap: 4rem;
+    flex-wrap: wrap;
 
     .ticket-title {
         font-size: 1rem;
@@ -15,18 +16,6 @@
         max-width: 16rem;
         padding: 1.5rem;
         border-radius: 2rem;
-    }
-    
-    article:nth-child(1) {
-        background-color: #FF000020;
-    }
-
-    article:nth-child(2) {
-        background-color: #FFB90020;
-    }
-
-    article:nth-child(3) {
-        background-color: #6727BA20;
     }
 }
 

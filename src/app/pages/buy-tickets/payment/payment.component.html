@@ -9,8 +9,9 @@
         <section class="payment-info">
             <h2>Medio de pago</h2>
             <div class="payment-methods">
-                <img src="../../../assets/img/webpay_image.png" alt="WebPay Plus" class="payment-icon">
-                <img src="../../../assets/img/paypal_image.png" alt="PayPal" class="payment-icon selected">
+                <div class="pay-option-btn">
+                    <img src="../../../assets/img/stripe_image.png" alt="Stripe" class="payment-icon">
+                </div>
             </div>
             <table class="pricing-table">
                 @for (ticketBySector of ticketsBySector(); track $index) {

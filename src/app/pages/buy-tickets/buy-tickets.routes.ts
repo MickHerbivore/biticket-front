@@ -12,6 +12,10 @@ export const routes: Routes = [
         component: BuyTicketsComponent,
         children: [
             {
+                path: 'tickets/:eventId/:orderId',
+                loadComponent: () => import('./tickets/tickets.component').then(m => m.TicketsComponent),
+            },
+            {
                 path: 'sector',
                 loadComponent: () => import('./sector/sector.component').then(m => m.SectorComponent),
             },
@@ -19,10 +23,6 @@ export const routes: Routes = [
                 path: 'payment',
                 loadComponent: () => import('./payment/payment.component').then(m => m.PaymentComponent),
             },
-            {
-                path: 'tickets',
-                loadComponent: () => import('./tickets/tickets.component').then(m => m.TicketsComponent),
-            }
         ]
     }
     

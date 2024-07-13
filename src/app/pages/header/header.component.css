@@ -14,7 +14,7 @@ header {
     padding: 4px 23px 7px;
     background-color: #ffd464;
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: auto 1fr auto 1fr;
     align-items: center;
   }
   
@@ -31,8 +31,7 @@ header {
   .audio{
     grid-column: 2;
     align-self: center;
-    position:absolute;
-    padding: 80px;
+    padding-left: 1rem;
   }
   
   

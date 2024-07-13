@@ -15,14 +15,14 @@
                 <span class="column-header">Cantidad</span>            
             </div>
 
-            @for (ticketDetail of event()?.ticketDetails; track $index) {
-                <app-sector-price-selector [ticketDetail]="ticketDetail"></app-sector-price-selector>
+            @for (ticketDetail of ticketDetails(); track $index) {
+                <app-sector-price-selector [ticketDetail]="ticketDetail" [quantity]="ticketDetail.quantity"></app-sector-price-selector>
             }
         
             <div class="total-section">
                 <span>Total</span>
                 <span class="total-price">{{ total() | currency:'CLP':'symbol':'1.0-0'  }}</span>
-                <button class="next-btn" (click)="onSiguiente()" [disabled]="total() === 0">Siguiente</button>
+                <button class="next-btn" (click)="onSiguiente()" [disabled]="total() === 0 || loadingCart()">Siguiente</button>
             </div>
 
         </section>

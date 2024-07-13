@@ -1,8 +1,9 @@
 import { AsyncPipe, CurrencyPipe, DatePipe, NgFor, TitleCasePipe } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnDestroy, OnInit, computed, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { CartService } from '../../../services/cart/cart.service';
 import { EventService } from '../../../services/event/event.service';
-import { BuyService } from '../services/buy.service';
 import { SectorPriceSelectorComponent } from './sector-price-selector/sector-price-selector.component';
 
 @Component({
@@ -12,16 +13,32 @@ import { SectorPriceSelectorComponent } from './sector-price-selector/sector-pri
   templateUrl: './sector.component.html',
   styleUrl: './sector.component.css'
 })
-export class SectorComponent implements OnInit {
+export class SectorComponent implements OnInit, OnDestroy {
 
   private eventService = inject(EventService);
-  private buyService = inject(BuyService);
+  private cartService = inject(CartService);
   private router = inject(Router);
 
+  private subs: Subscription[] = [];
+
   public event = this.eventService.currentEvent;
+  public cart = this.cartService.currentCart;
+  public loadingCart = this.cartService.loadingCart;
 
-  public total = this.buyService.totalPrice;
+  public total = this.cartService.totalPrice;
 
+  public ticketDetails = computed(() => {
+    return this.event()?.ticketDetails.map((ticketEvent) => {
+
+      const quantity = this.cart()?.tickets.filter((ticketCart) => ticketCart.sector.toString() === ticketEvent.sector._id).length || 0;
+
+      return {
+        ...ticketEvent,
+        quantity
+      };
+
+    })
+  });
 
   ngOnInit() {
     if (!this.event()) {
@@ -30,14 +47,28 @@ export class SectorComponent implements OnInit {
     }
 
     this.getEvent();
+    this.getCart();
   }
 
   getEvent() {
-    this.eventService.getCurrentEvent().subscribe();
+    this.subs.push(
+      this.eventService.getCurrentEvent().subscribe()
+    );
   }
+
+  getCart() {
+    this.subs.push(
+      // this.cartService.getCart().subscribe()
+    );
+  }
+
+
 
   onSiguiente() {
     this.router.navigate(['/buy/payment']);
   }
 
+  ngOnDestroy(): void {
+    this.subs.forEach(sub => sub.unsubscribe());
+  }
 }

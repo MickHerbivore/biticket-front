@@ -1,8 +1,8 @@
+import { CurrencyPipe, DatePipe, NgFor, TitleCasePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from '../../../services/cart/cart.service';
 import { EventService } from '../../../services/event/event.service';
-import { CurrencyPipe, DatePipe, NgFor, TitleCasePipe } from '@angular/common';
-import { BuyService } from '../services/buy.service';
 
 @Component({
   selector: 'app-payment',
@@ -15,11 +15,11 @@ export class PaymentComponent {
 
   private router = inject(Router);
   private eventService = inject(EventService);
-  private buyService = inject(BuyService);
+  private cartService = inject(CartService);
 
   public event = this.eventService.currentEvent;
-  public ticketsBySector = this.buyService.ticketsBySector;
-  public total = this.buyService.totalPrice;
+  public ticketsBySector = this.cartService.ticketsBySector;
+  public total = this.cartService.totalPrice;
 
 
   ngOnInit() {

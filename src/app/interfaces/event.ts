@@ -8,11 +8,14 @@ export interface Event {
 }
 
 export interface TicketDetails {
+    _id: string;
     sector: Sector;
     price: number;
+    quantity?: number;
 }
 
 export interface Sector {
+    _id: string;
     name: string;
     color: string;
 }
